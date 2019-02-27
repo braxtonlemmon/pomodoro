@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(192, 188, 151);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 20px;
+}
+.main-container {
+    margin: 0 auto;
+    min-width: 600px;
+    cursor: default;
+}
+
+h1 {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.watch {
+
+    background: rgb(38, 64, 66);
+    border: 10px solid black;
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+.status {
+    font-weight: bold;
+    width: 50%;
+    height: 15%;
+    margin: 80px auto 1px auto;
+}
+
+.work, .break {
+    background: rgb(53, 91, 94);
+    width: 40%;
+    height: 100%;
+    border-style: solid;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.work {
+    float: left;
+}
+
+.break {
+    float: right;
+}
+
+.timer {
+    font-size: 60px;
+    background: rgba(245, 245, 245, 0.637);
+    border: 5px solid black;
+    width: 65%;
+    height: 20%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons {
+ 
+    width: 299px;
+    margin: auto;
+    height: 18%;
+    position: absolute;
+    top: 64%;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+}
+
+.buttons img {
+    height: 90%;
+}
+
+img:hover {
+    cursor: pointer;
+}
+
+.button {
+
+    width: 33.333%;
+    height: 100%;
+    float: left;
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+}
+.settings {
+    font-size: 30px;
+    margin: 20px auto 0 auto;
+    width: 500px;
+    height: 100px;
+    
+}
+.session, .break-length {
+    background: rgb(48, 64, 66);
+    border-style: solid;
+    border-radius: 5px;
+    width: 25%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+.session {
+    float: left;
+    margin-left: 100px;
+
+}
+
+.break-length {
+    float: right;
+    margin-right: 100px;
+}
+
+.sess-time, .break-time {
+    background: rgba(245, 245, 245, 0.637);
+    border-style: solid;
+    height: 40%;
+    width: 90%;
+    margin: 5px auto;
+}
+
+.sess-knobs, .break-knobs {
+    height: 50%;
+
+    width: 100%;
+}
+
+.knob {
+
+    height: 100%;
+    width: 50%;
+    float: left;
+}
+
+#sess-up img, #break-up img {
+    height: 75%;
+}
+
+#sess-down img, #break-down img {
+    height: 95%;
+}
+
+

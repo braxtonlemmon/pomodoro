@@ -1,0 +1,71 @@
+<!--the layout:
+Needs:
+    title
+        selection box with...
+            adjustable session length
+            adjustable break selector
+        time box with...
+            play button
+            pause button
+            stop button
+            reset button
+            countdown timer
+-->
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Pomodoro Timer</title>
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <div class="main-container">
+        <h1>POMODORO</h1>
+        <div class="watch">
+            <div class="status">
+                <div class="work" id="work">WORK</div>
+                <div class="break" id="break">BREAK</div>
+            </div>
+            <div class="timer">
+                <span>25:00</span>
+            </div>
+            <div class="buttons">
+                <div class="button">
+                    <img src="images/pause.png">
+                </div>
+                <div class="button">
+                    <img src="images/play.png">
+                </div>
+                <div class="button">
+                    <img src="images/stop.png">
+                </div>
+            </div>
+        </div>
+        <div class="settings">
+            <div class="session">
+                <div class="sess-time">25:00</div>
+                <div class="sess-knobs">
+                    <div class="knob" id="sess-down">
+                        <img src="images/thumb-down.png"/>
+                    </div>
+                    <div class="knob" id="sess-up">
+                        <img src="images/thumb-up.png"/>
+                    </div>
+                </div>
+            </div>
+            <div class="break-length">
+                <div class="break-time">5:00</div>
+                <div class="break-knobs">
+                    <div class="knob" id="break-down">
+                        <img src="images/thumb-down.png"/>
+                    </div>
+                    <div class="knob" id="break-up">
+                        <img src="images/thumb-up.png"/>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
