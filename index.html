@@ -15,6 +15,7 @@ Needs:
 <!DOCTYPE HTML>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Pomodoro Timer</title>
     <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
@@ -27,45 +28,44 @@ Needs:
                 <div class="work" id="work">WORK</div>
                 <div class="break" id="break">BREAK</div>
             </div>
-            <div class="timer">
-                <span>25:00</span>
-            </div>
+            <div class="timer">25:00</div>
             <div class="buttons">
                 <div class="button">
-                    <img src="images/pause.png">
+                    <img id= "pause" src="images/pause.png">
                 </div>
                 <div class="button">
-                    <img src="images/play.png">
+                    <img id="play" src="images/play.png">
                 </div>
                 <div class="button">
-                    <img src="images/stop.png">
+                    <img id="stop" src="images/stop.png">
                 </div>
             </div>
         </div>
         <div class="settings">
             <div class="session">
-                <div class="sess-time">25:00</div>
+                <div class="sess-time"></div>
                 <div class="sess-knobs">
-                    <div class="knob" id="sess-down">
-                        <img src="images/thumb-down.png"/>
+                    <div class="knob">
+                        <img id="sess-down" src="images/thumb-down.png">
                     </div>
-                    <div class="knob" id="sess-up">
-                        <img src="images/thumb-up.png"/>
+                    <div class="knob">
+                        <img id="sess-up" src="images/thumb-up.png">
                     </div>
                 </div>
             </div>
             <div class="break-length">
-                <div class="break-time">5:00</div>
+                <div class="break-time"></div>
                 <div class="break-knobs">
-                    <div class="knob" id="break-down">
-                        <img src="images/thumb-down.png"/>
+                    <div class="knob">
+                        <img id="break-down" src="images/thumb-down.png">
                     </div>
-                    <div class="knob" id="break-up">
-                        <img src="images/thumb-up.png"/>    
+                    <div class="knob">
+                        <img id="break-up" src="images/thumb-up.png">    
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script src="script/script.js"></script>
 </html>

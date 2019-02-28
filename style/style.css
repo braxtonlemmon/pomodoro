@@ -153,11 +153,11 @@ img:hover {
     float: left;
 }
 
-#sess-up img, #break-up img {
+#sess-up, #break-up {
     height: 75%;
 }
 
-#sess-down img, #break-down img {
+#sess-down, #break-down {
     height: 95%;
 }
 
