@@ -26,8 +26,9 @@ let quarter = 0;
 
 
 //FUNCTIONS
+
+//Executed after play button is pressed
 function run() {
-    
     if (!go) {
         (counter == 0) ? beginSound.play() : false;
         go = true;
@@ -47,6 +48,7 @@ function run() {
     }   
 };
 
+//Run in between work and break sessions
 function transition() {
     if (min == 0 && sec == 0) {
         counter += 1;
@@ -61,7 +63,6 @@ function transition() {
                 quarter += 1; 
                 beginSound.play();
                 smallReset(timeSetting);
-
             };
         } else {
             clearInterval(tick);
@@ -71,6 +72,7 @@ function transition() {
     };
 };
 
+//Executed after stop button is pressed. Resets entire clock.
 function hardReset() {
     clearInterval(tick);
     pause = false;
@@ -89,6 +91,7 @@ function hardReset() {
     dots.forEach((dot) => dot.classList.remove('dot'));
 };
 
+//Reset run during transition function
 function smallReset(minutes) {
     pause = false;
     go = false;
@@ -100,6 +103,7 @@ function smallReset(minutes) {
     run();
 };
 
+//Executed if pause button is pressed
 function rest() {
     if (go == true) {
         go = false;
@@ -108,6 +112,7 @@ function rest() {
     clearInterval(tick);
 };
 
+//Allows time settings to be changed before clock is run
 function increment(e) {
     level = e.target.id;
     if (!go && !pause) {
@@ -146,7 +151,6 @@ function increment(e) {
 
 //TO RUN
 hardReset();
-
 pauseButton.addEventListener('click', rest);
 playButton.addEventListener('click', run);
 stopButton.addEventListener('click', hardReset);
