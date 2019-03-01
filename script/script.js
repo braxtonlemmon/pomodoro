@@ -8,7 +8,10 @@ const sessDisplay = document.querySelector('.sess-time');
 const breakDisplay = document.querySelector('.break-time');
 const workLight = document.querySelector('.work');
 const breakLight = document.querySelector('.break');
-const dots = document.querySelectorAll('.circle');
+const dots = [...document.querySelectorAll('.circle')];
+const beginSound = document.querySelector('.play');
+const pauseSound = document.querySelector('.halt');
+const doneSound = document.querySelector('.all-done');
 
 let timeSetting = 25;
 let breakSetting = 5;
@@ -19,20 +22,25 @@ let pause = false;
 let tick;
 let counter = 0;
 let worked = true;
-let theDots = [];
+let quarter = 0;
+
 
 //FUNCTIONS
 function run() {
+    
     if (!go) {
+        (counter == 0) ? beginSound.play() : false;
         go = true;
-        theDots[0].classList.add('dot');
+        dots[quarter].classList.add('dot');
         tick = setInterval(function() {
-            if (sec > 0) {
-                sec -= 1;
-            } else {
-                min -= 1;
-                sec = 59;
-            };
+            if (!(min == 0 && sec == 0)) {
+                if (sec > 0) {
+                    sec -= 1;
+                } else {
+                    min -= 1;
+                    sec = 59;
+                };    
+            }
             timerDisplay.textContent = `${min}:${sec.toString().padStart(2, '0')}`;
             transition();
         }, 1000); 
@@ -43,16 +51,22 @@ function transition() {
     if (min == 0 && sec == 0) {
         counter += 1;
         clearInterval(tick);
-        if (counter <= 8) {
+        if (counter < 7) {
             if (worked == true) {
                 worked = false;
+                pauseSound.play();
                 smallReset(breakSetting); 
             } else {
                 worked = true;
-                smallReset(timeSetting)  
+                quarter += 1; 
+                beginSound.play();
+                smallReset(timeSetting);
+
             };
         } else {
+            clearInterval(tick);
             timerDisplay.textContent = "COMPLETE!";
+            doneSound.play();
         };
     };
 };
@@ -69,9 +83,10 @@ function hardReset() {
     sessDisplay.textContent = "25:00";
     breakDisplay.textContent = "5:00";
     workLight.classList.remove('light');
+    workLight.classList.add('light');
     breakLight.classList.remove('light');
     counter = 0;
-    theDots.forEach((dot) => (dot.classList.remove('dot')));
+    dots.forEach((dot) => dot.classList.remove('dot'));
 };
 
 function smallReset(minutes) {
@@ -98,24 +113,32 @@ function increment(e) {
     if (!go && !pause) {
         switch (level) {
             case "sess-down":
-                timeSetting -= 1;
-                sessDisplay.textContent = `${timeSetting}:00`;
-                timerDisplay.textContent = `${timeSetting}:00`;
-                min = timeSetting;
+                if (timeSetting > 1) {
+                    timeSetting -= 1;
+                    sessDisplay.textContent = `${timeSetting}:00`;
+                    timerDisplay.textContent = `${timeSetting}:00`;
+                    min = timeSetting;
+                };
                 break;
             case "sess-up":
-                timeSetting += 1;
-                sessDisplay.textContent = `${timeSetting}:00`;
-                timerDisplay.textContent = `${timeSetting}:00`;
-                min = timeSetting;
+                if (timeSetting < 99) {    
+                    timeSetting += 1;
+                    sessDisplay.textContent = `${timeSetting}:00`;
+                    timerDisplay.textContent = `${timeSetting}:00`;
+                    min = timeSetting;
+                };
                 break;
             case "break-down":
-                breakSetting -= 1;
-                breakDisplay.textContent = `${breakSetting}:00`;
+                if (breakSetting > 1) {    
+                    breakSetting -= 1;
+                    breakDisplay.textContent = `${breakSetting}:00`;
+                };
                 break;
             case "break-up":
-                breakSetting += 1;
-                breakDisplay.textContent = `${breakSetting}:00`;
+                if (breakSetting < 99) {    
+                    breakSetting += 1;
+                    breakDisplay.textContent = `${breakSetting}:00`;
+                };
                 break;
         }
     };
@@ -123,10 +146,9 @@ function increment(e) {
 
 //TO RUN
 hardReset();
-workLight.classList.toggle('light');
+
 pauseButton.addEventListener('click', rest);
 playButton.addEventListener('click', run);
 stopButton.addEventListener('click', hardReset);
 timeButtons.forEach((button) => {button.addEventListener('click', increment)});
-dots.forEach((dot) => {theDots.push(dot)});
 
